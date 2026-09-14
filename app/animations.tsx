@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect } from "react";
@@ -9,6 +10,22 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Animations() {
   useEffect(() => {
     const ctx = gsap.context(() => {
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      if (reduceMotion) {
+        gsap.set(
+          "section, h1, h2, h3, p, a, img, .text-5xl, .text-6xl, .text-7xl",
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+          }
+        );
+        return;
+      }
+
       /* =========================
          HERO INTRO
       ========================= */
@@ -20,85 +37,84 @@ export default function Animations() {
       const heroButton = document.querySelector<HTMLElement>("#hero-button");
       const heroScroll = document.querySelector<HTMLElement>("#hero-scroll");
 
+      const heroTimeline = gsap.timeline({
+        defaults: {
+          ease: "power4.out",
+        },
+      });
+
       if (hero) {
         gsap.fromTo(
           hero,
-          {
-            backgroundSize: "100%",
-          },
+          { backgroundSize: "100%" },
           {
             backgroundSize: "112%",
-            duration: 12,
+            duration: 16,
             ease: "power1.out",
           }
         );
       }
 
       if (heroTitle) {
-        gsap.fromTo(
+        heroTimeline.fromTo(
           heroTitle,
           {
-            y: 100,
+            y: 80,
             opacity: 0,
             scale: 0.96,
+            filter: "blur(8px)",
           },
           {
             y: 0,
             opacity: 1,
             scale: 1,
-            duration: 1.5,
-            delay: 0.3,
-            ease: "power4.out",
-          }
+            filter: "blur(0px)",
+            duration: 1.4,
+          },
+          0.2
         );
       }
 
       if (heroSubtitle) {
-        gsap.fromTo(
+        heroTimeline.fromTo(
           heroSubtitle,
           {
-            y: 30,
+            y: 28,
             opacity: 0,
           },
           {
             y: 0,
             opacity: 1,
             duration: 1,
-            delay: 0.8,
-            ease: "power3.out",
-          }
+          },
+          0.8
         );
       }
 
       if (heroButton) {
-        gsap.fromTo(
+        heroTimeline.fromTo(
           heroButton,
           {
-            y: 30,
+            y: 24,
             opacity: 0,
           },
           {
             y: 0,
             opacity: 1,
-            duration: 1,
-            delay: 1,
-            ease: "power3.out",
-          }
+            duration: 0.9,
+          },
+          1
         );
       }
 
-      /* =========================
-         SCROLL INDICATOR
-      ========================= */
-
       if (heroScroll) {
         gsap.to(heroScroll, {
-          y: 12,
-          opacity: 0.35,
-          duration: 1.5,
+          y: 10,
+          opacity: 0.4,
+          duration: 1.6,
           repeat: -1,
           yoyo: true,
-          ease: "power1.inOut",
+          ease: "sine.inOut",
         });
       }
 
@@ -114,7 +130,7 @@ export default function Animations() {
         if (index === 0) return;
 
         const elements = section.querySelectorAll<HTMLElement>(
-          "h2, h3, p, a"
+          "h2, h3, p, a, button"
         );
 
         if (!elements.length) return;
@@ -122,18 +138,18 @@ export default function Animations() {
         gsap.fromTo(
           elements,
           {
-            y: 60,
+            y: 38,
             opacity: 0,
           },
           {
             y: 0,
             opacity: 1,
-            duration: 1,
-            stagger: 0.08,
+            duration: 0.9,
+            stagger: 0.06,
             ease: "power3.out",
             scrollTrigger: {
               trigger: section,
-              start: "top 80%",
+              start: "top 82%",
               toggleActions: "play none none reverse",
             },
           }
@@ -141,7 +157,7 @@ export default function Animations() {
       });
 
       /* =========================
-         IMAGE REVEAL
+         IMAGE REVEALS
       ========================= */
 
       const images = Array.from(
@@ -152,15 +168,17 @@ export default function Animations() {
         gsap.fromTo(
           image,
           {
+            opacity: 0,
             scale: 1.08,
           },
           {
+            opacity: 1,
             scale: 1,
-            duration: 1.5,
+            duration: 1.2,
             ease: "power3.out",
             scrollTrigger: {
               trigger: image,
-              start: "top 85%",
+              start: "top 88%",
               toggleActions: "play none none reverse",
             },
           }
@@ -179,17 +197,17 @@ export default function Animations() {
         gsap.fromTo(
           heading,
           {
-            y: 70,
+            y: 45,
             opacity: 0,
           },
           {
             y: 0,
             opacity: 1,
-            duration: 1.1,
+            duration: 1,
             ease: "power4.out",
             scrollTrigger: {
               trigger: heading,
-              start: "top 82%",
+              start: "top 86%",
               toggleActions: "play none none reverse",
             },
           }
@@ -200,57 +218,66 @@ export default function Animations() {
          STAT NUMBERS
       ========================= */
 
-      sections.forEach((section) => {
-        const numbers = section.querySelectorAll<HTMLElement>(
+      const numbers = Array.from(
+        document.querySelectorAll<HTMLElement>(
           ".text-5xl, .text-6xl, .text-7xl"
-        );
+        )
+      );
 
-        if (!numbers.length) return;
-
+      if (numbers.length) {
         gsap.fromTo(
           numbers,
           {
-            scale: 0.8,
+            y: 25,
             opacity: 0,
+            scale: 0.9,
           },
           {
-            scale: 1,
+            y: 0,
             opacity: 1,
+            scale: 1,
             duration: 1,
-            stagger: 0.12,
-            ease: "back.out(1.5)",
+            stagger: 0.1,
+            ease: "back.out(1.4)",
             scrollTrigger: {
-              trigger: section,
-              start: "top 80%",
+              trigger: numbers[0],
+              start: "top 85%",
               toggleActions: "play none none reverse",
             },
           }
         );
-      });
+      }
 
       /* =========================
-         BUTTON HOVER
+         PREMIUM LINK HOVER
       ========================= */
 
-      const buttons = Array.from(
+      const links = Array.from(
         document.querySelectorAll<HTMLAnchorElement>("a")
       );
 
-      buttons.forEach((button) => {
-        button.addEventListener("mouseenter", () => {
-          gsap.to(button, {
+      links.forEach((link) => {
+        const enter = () => {
+          gsap.to(link, {
             y: -3,
             duration: 0.25,
             ease: "power2.out",
           });
-        });
+        };
 
-        button.addEventListener("mouseleave", () => {
-          gsap.to(button, {
+        const leave = () => {
+          gsap.to(link, {
             y: 0,
             duration: 0.25,
             ease: "power2.out",
           });
+        };
+
+        link.addEventListener("mouseenter", enter);
+        link.addEventListener("mouseleave", leave);
+
+        gsap.set(link, {
+          willChange: "transform",
         });
       });
 
@@ -263,20 +290,27 @@ export default function Animations() {
       );
 
       projectImages.forEach((image) => {
-        image.addEventListener("mouseenter", () => {
+        const enter = () => {
           gsap.to(image, {
-            scale: 1.05,
-            duration: 0.7,
+            scale: 1.06,
+            duration: 0.65,
             ease: "power3.out",
           });
-        });
+        };
 
-        image.addEventListener("mouseleave", () => {
+        const leave = () => {
           gsap.to(image, {
             scale: 1,
-            duration: 0.7,
+            duration: 0.65,
             ease: "power3.out",
           });
+        };
+
+        image.addEventListener("mouseenter", enter);
+        image.addEventListener("mouseleave", leave);
+
+        gsap.set(image, {
+          willChange: "transform",
         });
       });
 
@@ -289,7 +323,7 @@ export default function Animations() {
       );
 
       anchorLinks.forEach((link) => {
-        link.addEventListener("click", (event) => {
+        const handleClick = (event: MouseEvent) => {
           const href = link.getAttribute("href");
 
           if (!href || href === "#") return;
@@ -304,12 +338,10 @@ export default function Animations() {
             behavior: "smooth",
             block: "start",
           });
-        });
-      });
+        };
 
-      /* =========================
-         REFRESH
-      ========================= */
+        link.addEventListener("click", handleClick);
+      });
 
       ScrollTrigger.refresh();
     });

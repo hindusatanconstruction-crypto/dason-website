@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -35,7 +36,6 @@ export default function Home() {
 
           </a>
 
-
           {/* DESKTOP MENU */}
 
           <div className="hidden items-center gap-10 text-xs uppercase tracking-[0.2em] md:flex">
@@ -70,7 +70,6 @@ export default function Home() {
 
           </div>
 
-
           {/* DESKTOP CONTACT BUTTON */}
 
           <a
@@ -79,7 +78,6 @@ export default function Home() {
           >
             Get In Touch
           </a>
-
 
           {/* MOBILE MENU BUTTON */}
 
@@ -108,7 +106,6 @@ export default function Home() {
           </button>
 
         </div>
-
 
         {/* MOBILE MENU */}
 
@@ -168,7 +165,6 @@ export default function Home() {
 
       </nav>
 
-
       {/* =========================
           HERO
       ========================= */}
@@ -182,14 +178,11 @@ export default function Home() {
         }}
       >
 
-        {/* DARK OVERLAYS */}
-
         <div className="absolute inset-0 bg-black/45" />
 
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/55 to-black/20" />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20" />
-
 
         {/* HERO CONTENT */}
 
@@ -202,7 +195,6 @@ export default function Home() {
             Construction • Infrastructure • Engineering
           </p>
 
-
           <h1
             id="hero-title"
             className="max-w-6xl text-6xl font-semibold uppercase leading-[0.78] tracking-[-0.065em] md:text-8xl lg:text-[10rem]"
@@ -212,14 +204,12 @@ export default function Home() {
             BUILDCOM
           </h1>
 
-
           <div className="mt-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
 
             <p className="max-w-xl text-lg leading-8 text-white/70 md:text-xl">
               Building infrastructure with precision, strength and
               long-term vision.
             </p>
-
 
             <a
               id="hero-button"
@@ -232,7 +222,6 @@ export default function Home() {
           </div>
 
         </div>
-
 
         {/* SCROLL INDICATOR */}
 
@@ -259,7 +248,6 @@ export default function Home() {
 
         </div>
 
-
         {/* LOCATION */}
 
         <div className="absolute bottom-8 right-6 z-20 hidden items-center gap-4 md:right-10 md:flex">
@@ -282,7 +270,6 @@ export default function Home() {
 
       </section>
 
-
       {/* =========================
           INTRO
       ========================= */}
@@ -301,14 +288,12 @@ export default function Home() {
 
             </div>
 
-
             <div>
 
               <h2 className="max-w-6xl text-4xl font-medium leading-[1.05] tracking-[-0.03em] md:text-6xl lg:text-7xl">
                 We build the infrastructure that moves people, connects
                 places and creates lasting value.
               </h2>
-
 
               <div className="mt-12 grid gap-10 md:grid-cols-2">
 
@@ -317,7 +302,6 @@ export default function Home() {
                   company focused on dependable execution, engineering
                   quality and practical project delivery.
                 </p>
-
 
                 <p className="text-base leading-8 text-white/50">
                   From roads and civil structures to earthwork and
@@ -335,7 +319,6 @@ export default function Home() {
 
       </section>
 
-
       {/* =========================
           EXPERTISE
       ========================= */}
@@ -352,13 +335,11 @@ export default function Home() {
                 02 — What We Do
               </p>
 
-
               <h2 className="mt-7 text-5xl font-medium leading-[0.95] tracking-[-0.04em] md:text-7xl">
                 Our
                 <br />
                 Expertise
               </h2>
-
 
               <p className="mt-10 max-w-md text-base leading-8 text-white/45">
                 Complete construction capabilities backed by experienced
@@ -367,7 +348,6 @@ export default function Home() {
               </p>
 
             </div>
-
 
             <div className="border-t border-white/10">
 
@@ -415,7 +395,6 @@ export default function Home() {
 
                   </div>
 
-
                   <span className="ml-6 text-2xl text-white/40 transition group-hover:translate-x-2">
                     ↗
                   </span>
@@ -431,7 +410,6 @@ export default function Home() {
         </div>
 
       </section>
-
 
       {/* =========================
           PROJECTS
@@ -455,135 +433,95 @@ export default function Home() {
 
             </div>
 
-
             <p className="max-w-xl text-base leading-8 text-white/40">
-              Construction and infrastructure capabilities delivered
-              through disciplined planning, site execution and quality
-              control.
+              A selection of completed building and infrastructure works
+              delivered through disciplined planning, site execution and
+              quality control.
             </p>
 
           </div>
 
+          {/* ACTUAL PROJECT PHOTOS */}
 
-          {/* PROJECT 01 */}
+          <div className="mt-20 grid gap-8 md:grid-cols-2">
 
-          <div className="mt-20">
+            {[
+              {
+                image: "/projects/mgm-hospital.jpg",
+                number: "01",
+                title: "MGM Hospital",
+                category: "Healthcare Building",
+              },
+              {
+                image: "/projects/mgm-polytechnic.jpg",
+                number: "02",
+                title: "MGM Polytechnic Building",
+                category: "Educational Building",
+              },
+              {
+                image: "/projects/mgm-university.jpeg",
+                number: "03",
+                title: "MGM University",
+                category: "Institutional Building",
+              },
+              {
+                image: "/projects/sant-tukaram-natyagruha.webp",
+                number: "04",
+                title: "Sant Tukaram Natyagruha",
+                category: "Cultural Building",
+              },
+              {
+                image: "/projects/santukaram-hall.jpg",
+                number: "05",
+                title: "Santukaram Hall",
+                category: "Building Construction",
+              },
+              {
+                image: "/projects/shreyash-college-hostel.jpg",
+                number: "06",
+                title: "Shreyash College Hostel Building",
+                category: "Hostel Building",
+              },
+            ].map((project) => (
 
-            <div className="group relative overflow-hidden">
+              <div
+                key={project.number}
+                className="group relative overflow-hidden"
+              >
 
-              <img
-                src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2200&q=90"
-                alt="Infrastructure construction"
-                className="h-[55vh] w-full object-cover transition duration-1000 group-hover:scale-[1.04] md:h-[75vh]"
-              />
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="h-[55vh] w-full object-cover transition duration-1000 group-hover:scale-[1.05] md:h-[65vh]"
+                />
 
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-6 md:p-8">
 
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/50">
+                    {project.number} / Completed Project
+                  </p>
 
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
+                  <h3 className="mt-3 text-2xl font-medium md:text-3xl">
+                    {project.title}
+                  </h3>
 
-                <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-
-                  <div>
-
-                    <p className="text-xs uppercase tracking-[0.3em] text-white/50">
-                      01 / Infrastructure
-                    </p>
-
-                    <h3 className="mt-4 text-3xl font-medium md:text-5xl">
-                      Infrastructure Development
-                    </h3>
-
-                  </div>
-
-
-                  <p className="max-w-sm text-sm leading-7 text-white/60">
-                    Road and infrastructure execution with focus on
-                    durability, engineering standards and site
-                    coordination.
+                  <p className="mt-3 text-sm text-white/50">
+                    {project.category}
                   </p>
 
                 </div>
 
               </div>
 
-            </div>
-
-          </div>
-
-
-          {/* PROJECT 02 + 03 */}
-
-          <div className="mt-8 grid gap-8 md:grid-cols-2">
-
-            <div className="group relative overflow-hidden">
-
-              <img
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=90"
-                alt="Civil construction"
-                className="h-[55vh] w-full object-cover transition duration-1000 group-hover:scale-[1.05]"
-              />
-
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
-
-
-              <div className="absolute bottom-0 left-0 p-6 md:p-8">
-
-                <p className="text-xs uppercase tracking-[0.3em] text-white/50">
-                  02 / Civil
-                </p>
-
-                <h3 className="mt-3 text-2xl font-medium md:text-3xl">
-                  Civil Construction
-                </h3>
-
-                <p className="mt-3 text-sm text-white/50">
-                  Maharashtra • Civil Works
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div className="group relative overflow-hidden">
-
-              <img
-                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=90"
-                alt="Infrastructure development"
-                className="h-[55vh] w-full object-cover transition duration-1000 group-hover:scale-[1.05]"
-              />
-
-
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
-
-
-              <div className="absolute bottom-0 left-0 p-6 md:p-8">
-
-                <p className="text-xs uppercase tracking-[0.3em] text-white/50">
-                  03 / Earthwork
-                </p>
-
-                <h3 className="mt-3 text-2xl font-medium md:text-3xl">
-                  Earthwork & Development
-                </h3>
-
-                <p className="mt-3 text-sm text-white/50">
-                  Maharashtra • Site Development
-                </p>
-
-              </div>
-
-            </div>
+            ))}
 
           </div>
 
         </div>
 
       </section>
-
 
       {/* =========================
           STATS
@@ -605,7 +543,6 @@ export default function Home() {
               </p>
             </div>
 
-
             <div>
               <div className="text-5xl font-medium tracking-[-0.05em] md:text-7xl">
                 50+
@@ -616,7 +553,6 @@ export default function Home() {
               </p>
             </div>
 
-
             <div>
               <div className="text-5xl font-medium tracking-[-0.05em] md:text-7xl">
                 10+
@@ -626,7 +562,6 @@ export default function Home() {
                 Equipment & Machinery
               </p>
             </div>
-
 
             <div>
               <div className="text-5xl font-medium tracking-[-0.05em] md:text-7xl">
@@ -643,7 +578,6 @@ export default function Home() {
         </div>
 
       </section>
-
 
       {/* =========================
           ABOUT
@@ -669,7 +603,6 @@ export default function Home() {
 
             </div>
 
-
             <div className="space-y-8">
 
               <p className="text-xl leading-9 text-white/75 md:text-2xl">
@@ -677,20 +610,17 @@ export default function Home() {
                 good construction begins with responsible execution.
               </p>
 
-
               <p className="leading-8 text-white/45">
                 Our work combines planning, engineering understanding,
                 site management and equipment capability to deliver
                 projects efficiently and responsibly.
               </p>
 
-
               <p className="leading-8 text-white/45">
                 We believe long-term relationships are created through
                 consistent quality, transparent communication and
                 dependable project delivery.
               </p>
-
 
               <p className="leading-8 text-white/45">
                 As our capabilities continue to grow, our focus remains
@@ -705,7 +635,6 @@ export default function Home() {
         </div>
 
       </section>
-
 
       {/* =========================
           MACHINERY
@@ -731,7 +660,6 @@ export default function Home() {
 
             </div>
 
-
             <p className="max-w-md leading-8 text-white/40">
               In-house and project-ready equipment supporting
               earthwork, infrastructure and civil construction
@@ -739,7 +667,6 @@ export default function Home() {
             </p>
 
           </div>
-
 
           <div className="mt-20 grid gap-px border border-white/10 bg-white/10 md:grid-cols-4">
 
@@ -781,7 +708,6 @@ export default function Home() {
 
       </section>
 
-
       {/* =========================
           WHY DASON
       ========================= */}
@@ -805,7 +731,6 @@ export default function Home() {
               </h2>
 
             </div>
-
 
             <div className="grid gap-5 md:grid-cols-2">
 
@@ -861,7 +786,6 @@ export default function Home() {
 
       </section>
 
-
       {/* =========================
           CAPABILITY
       ========================= */}
@@ -874,7 +798,6 @@ export default function Home() {
             07 — Our Capability
           </p>
 
-
           <h2 className="mt-8 max-w-6xl text-5xl font-medium leading-[0.95] tracking-[-0.05em] md:text-7xl lg:text-8xl">
             Engineering.
             <br />
@@ -883,7 +806,6 @@ export default function Home() {
             Reliability.
           </h2>
 
-
           <div className="mt-16 flex flex-col justify-between gap-10 border-t border-white/10 pt-10 md:flex-row">
 
             <p className="max-w-xl text-lg leading-8 text-white/45">
@@ -891,7 +813,6 @@ export default function Home() {
               initial site preparation through execution, completion
               and handover.
             </p>
-
 
             <a
               href="#contact"
@@ -905,7 +826,6 @@ export default function Home() {
         </div>
 
       </section>
-
 
       {/* =========================
           CONTACT
@@ -923,13 +843,11 @@ export default function Home() {
                 08 — Contact
               </p>
 
-
               <h2 className="mt-7 max-w-3xl text-5xl font-medium leading-[0.95] tracking-[-0.05em] md:text-8xl">
                 Let's Build
                 <br />
                 Together.
               </h2>
-
 
               <p className="mt-10 max-w-xl text-lg leading-8 text-black/50">
                 Have a construction, infrastructure or civil project
@@ -937,7 +855,6 @@ export default function Home() {
               </p>
 
             </div>
-
 
             <div className="flex flex-col justify-end">
 
@@ -958,7 +875,6 @@ export default function Home() {
 
                 </a>
 
-
                 <a
                   href="tel:+919271333313"
                   className="flex items-center justify-between border-b border-black/15 py-6 transition hover:px-2"
@@ -973,7 +889,6 @@ export default function Home() {
                   </span>
 
                 </a>
-
 
                 <a
                   href="mailto:dasonbuildcom01@gmail.com"
@@ -992,7 +907,6 @@ export default function Home() {
 
       </section>
 
-
       {/* =========================
           FINAL CTA
       ========================= */}
@@ -1005,7 +919,6 @@ export default function Home() {
             Dason Buildcom
           </p>
 
-
           <h2 className="mt-8 max-w-6xl text-5xl font-medium leading-[0.9] tracking-[-0.055em] md:text-8xl lg:text-[9rem]">
             Let's Build
             <br />
@@ -1013,7 +926,6 @@ export default function Home() {
             <br />
             That Lasts.
           </h2>
-
 
           <a
             href="#contact"
@@ -1025,7 +937,6 @@ export default function Home() {
         </div>
 
       </section>
-
 
       {/* =========================
           FOOTER
@@ -1053,7 +964,6 @@ export default function Home() {
 
             </div>
 
-
             <div className="flex flex-wrap gap-8 text-[10px] uppercase tracking-[0.2em] text-white/40">
 
               <a href="#expertise" className="hover:text-white">
@@ -1076,7 +986,6 @@ export default function Home() {
 
           </div>
 
-
           <div className="mt-16 flex flex-col justify-between gap-4 border-t border-white/10 pt-6 text-[10px] uppercase tracking-[0.15em] text-white/25 md:flex-row">
 
             <span>
@@ -1093,7 +1002,6 @@ export default function Home() {
 
       </footer>
 
-
       {/* =========================
           WHATSAPP
       ========================= */}
@@ -1108,9 +1016,8 @@ export default function Home() {
         W
       </a>
 
-
       {/* =========================
-          GSAP
+          GSAP ANIMATIONS
       ========================= */}
 
       <Animations />
