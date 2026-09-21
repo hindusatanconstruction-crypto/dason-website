@@ -4,801 +4,436 @@
 import { useState } from "react";
 import Animations from "./animations";
 
+const projects = [
+  {
+    image: "/projects/mgm-hospital.jpg",
+    title: "MGM Hospital",
+    category: "Healthcare Building",
+  },
+  {
+    image: "/projects/mgm-polytechnic.jpg",
+    title: "MGM Polytechnic",
+    category: "Educational Building",
+  },
+  {
+    image: "/projects/mgm-university.jpeg",
+    title: "MGM University",
+    category: "Institutional Building",
+  },
+  {
+    image: "/projects/sant-tukaram-natyagruha.webp",
+    title: "Sant Tukaram Natyagruha",
+    category: "Cultural Building",
+  },
+  {
+    image: "/projects/santukaram-hall.jpg",
+    title: "Santukaram Hall",
+    category: "Building Construction",
+  },
+  {
+    image: "/projects/shreyash-college-hostel.jpg",
+    title: "Shreyash College Hostel",
+    category: "Hostel Building",
+  },
+];
+
+const expertise = [
+  {
+    number: "01",
+    title: "Roads & Infrastructure",
+    description:
+      "Road development, pavement works, earthwork and infrastructure execution.",
+  },
+  {
+    number: "02",
+    title: "Civil Structures",
+    description:
+      "RCC, foundations, drainage and civil construction works.",
+  },
+  {
+    number: "03",
+    title: "Earthwork",
+    description:
+      "Excavation, filling, grading and site development operations.",
+  },
+  {
+    number: "04",
+    title: "Government Works",
+    description:
+      "Civil and infrastructure works with quality and contractual discipline.",
+  },
+];
+
+const machinery = [
+  "JCB",
+  "Poclain",
+  "Grader",
+  "Roller",
+  "Ajax",
+  "Tractor",
+  "Site Vehicles",
+  "Project Equipment",
+];
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <main className="overflow-x-hidden bg-black text-white">
+    <main className="overflow-x-hidden bg-[#080808] text-white">
+      <Animations />
 
-      {/* =========================
-          NAVBAR
-      ========================= */}
-
-      <nav className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-black/30 backdrop-blur-xl">
-
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 md:px-10">
-
-          {/* LOGO */}
-
+      {/* NAVBAR */}
+      <nav className="fixed left-0 right-0 top-0 z-50 border-b border-[#c9a96e]/20 bg-[#080808]/85 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-10">
           <a href="#" onClick={closeMenu} className="relative z-50">
-
-            <div className="text-xl font-semibold tracking-[0.25em]">
-              DASON
-            </div>
-
-            <div className="mt-1 text-[9px] uppercase tracking-[0.35em] text-white/40">
-              Buildcom
-            </div>
-
+            <img
+              src="/images/dason-logo.jpg"
+              alt="Dason Buildcom Logo"
+              className="h-12 w-auto max-w-[180px] object-contain"
+            />
           </a>
 
-          {/* DESKTOP MENU */}
-
-          <div className="hidden items-center gap-10 text-xs uppercase tracking-[0.2em] md:flex">
-
-            <a
-              href="#expertise"
-              className="transition duration-300 hover:text-white/50"
-            >
+          <div className="hidden items-center gap-8 text-[11px] uppercase tracking-[0.18em] md:flex">
+            <a href="#expertise" className="nav-link">
               Expertise
             </a>
-
-            <a
-              href="#projects"
-              className="transition duration-300 hover:text-white/50"
-            >
+            <a href="#projects" className="nav-link">
               Projects
             </a>
-
-            <a
-              href="#about"
-              className="transition duration-300 hover:text-white/50"
-            >
+            <a href="#about" className="nav-link">
               About
             </a>
-
-            <a
-              href="#contact"
-              className="transition duration-300 hover:text-white/50"
-            >
+            <a href="#contact" className="nav-link">
               Contact
             </a>
-
           </div>
-
-          {/* DESKTOP CONTACT BUTTON */}
 
           <a
             href="#contact"
-            className="hidden border border-white/30 px-5 py-3 text-[10px] uppercase tracking-[0.2em] transition duration-500 hover:bg-white hover:text-black md:block"
+            className="hidden border border-[#c9a96e] px-5 py-3 text-[10px] uppercase tracking-[0.18em] text-[#e6c991] transition hover:bg-[#c9a96e] hover:text-black md:block"
           >
             Get In Touch
           </a>
 
-          {/* MOBILE MENU BUTTON */}
-
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="relative z-50 flex h-11 w-11 items-center justify-center border border-white/20 md:hidden"
+            className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 border border-white/20 md:hidden"
             aria-label="Toggle menu"
           >
-
-            <div className="flex w-5 flex-col gap-1.5">
-
-              <span
-                className={`block h-px w-full bg-white transition duration-300 ${
-                  menuOpen ? "translate-y-[4px] rotate-45" : ""
-                }`}
-              />
-
-              <span
-                className={`block h-px w-full bg-white transition duration-300 ${
-                  menuOpen ? "-translate-y-[2px] -rotate-45" : ""
-                }`}
-              />
-
-            </div>
-
+            <span
+              className={`h-px w-5 bg-white transition ${
+                menuOpen ? "translate-y-1 rotate-45" : ""
+              }`}
+            />
+            <span
+              className={`h-px w-5 bg-white transition ${
+                menuOpen ? "-rotate-45" : ""
+              }`}
+            />
           </button>
-
         </div>
-
-        {/* MOBILE MENU */}
 
         <div
-          className={`absolute left-0 right-0 top-full overflow-hidden border-b border-white/10 bg-black/95 backdrop-blur-xl transition-all duration-500 md:hidden ${
-            menuOpen
-              ? "max-h-[500px] opacity-100"
-              : "max-h-0 opacity-0"
+          className={`overflow-hidden bg-[#080808] transition-all duration-500 md:hidden ${
+            menuOpen ? "max-h-96 border-t border-white/10" : "max-h-0"
           }`}
         >
-
-          <div className="flex flex-col px-6 py-8">
-
-            <a
-              href="#expertise"
-              onClick={closeMenu}
-              className="border-b border-white/10 py-5 text-sm uppercase tracking-[0.2em]"
-            >
-              Expertise
-            </a>
-
-            <a
-              href="#projects"
-              onClick={closeMenu}
-              className="border-b border-white/10 py-5 text-sm uppercase tracking-[0.2em]"
-            >
-              Projects
-            </a>
-
-            <a
-              href="#about"
-              onClick={closeMenu}
-              className="border-b border-white/10 py-5 text-sm uppercase tracking-[0.2em]"
-            >
-              About
-            </a>
-
-            <a
-              href="#contact"
-              onClick={closeMenu}
-              className="border-b border-white/10 py-5 text-sm uppercase tracking-[0.2em]"
-            >
-              Contact
-            </a>
-
-            <a
-              href="#contact"
-              onClick={closeMenu}
-              className="mt-6 bg-white px-6 py-4 text-center text-xs uppercase tracking-[0.2em] text-black"
-            >
-              Get In Touch
-            </a>
-
+          <div className="flex flex-col px-6 py-5">
+            {["expertise", "projects", "about", "contact"].map((item) => (
+              <a
+                key={item}
+                href={`#${item}`}
+                onClick={closeMenu}
+                className="border-b border-white/10 py-5 text-xs uppercase tracking-[0.2em]"
+              >
+                {item}
+              </a>
+            ))}
           </div>
-
         </div>
-
       </nav>
 
-      {/* =========================
-          HERO
-      ========================= */}
-
+      {/* HERO */}
       <section
-        id="hero"
-        className="relative flex min-h-screen items-center overflow-hidden bg-cover bg-center"
+        className="relative flex min-h-screen items-center bg-cover bg-center"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=2400&q=90')",
         }}
       >
+        <div className="absolute inset-0 bg-black/65" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
 
-        <div className="absolute inset-0 bg-black/45" />
-
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/55 to-black/20" />
-
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/20" />
-
-        {/* HERO CONTENT */}
-
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-32 md:px-10">
-
-          <p
-            id="hero-subtitle"
-            className="mb-8 max-w-xl text-xs uppercase tracking-[0.35em] text-white/60 md:text-sm md:tracking-[0.45em]"
-          >
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-40 md:px-10">
+          <p className="mb-8 text-xs uppercase tracking-[0.3em] text-[#c9a96e] md:text-sm">
             Construction • Infrastructure • Engineering
           </p>
 
-          <h1
-            id="hero-title"
-            className="max-w-6xl text-6xl font-semibold uppercase leading-[0.78] tracking-[-0.065em] md:text-8xl lg:text-[10rem]"
-          >
+          <h1 className="max-w-6xl text-6xl font-semibold uppercase leading-[0.82] tracking-[-0.07em] md:text-8xl lg:text-[9rem]">
             DASON
             <br />
-            BUILDCOM
+            <span className="gold-gradient">BUILDCOM</span>
           </h1>
 
           <div className="mt-12 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-
-            <p className="max-w-xl text-lg leading-8 text-white/70 md:text-xl">
+            <p className="max-w-xl text-lg leading-8 text-white/65 md:text-xl">
               Building infrastructure with precision, strength and
               long-term vision.
             </p>
 
-            <a
-              id="hero-button"
-              href="#projects"
-              className="inline-flex w-fit border border-white/40 px-8 py-4 text-xs uppercase tracking-[0.25em] transition duration-500 hover:bg-white hover:text-black"
-            >
-              Explore Our Work
+            <a href="#projects" className="btn-gold w-fit">
+              Explore Our Work ↗
             </a>
-
           </div>
-
         </div>
 
-        {/* SCROLL INDICATOR */}
-
-        <div
-          id="hero-scroll"
-          className="absolute bottom-7 left-6 z-20 flex items-center gap-4 md:left-10"
-        >
-
-          <div className="flex h-16 w-px items-start overflow-hidden bg-white/20">
-            <div className="h-8 w-px bg-white" />
-          </div>
-
-          <div>
-
-            <p className="text-[9px] uppercase tracking-[0.35em] text-white/40">
-              Scroll
-            </p>
-
-            <p className="mt-1 text-[9px] uppercase tracking-[0.25em] text-white/70">
-              Explore
-            </p>
-
-          </div>
-
+        <div className="absolute bottom-8 left-6 text-[10px] uppercase tracking-[0.3em] text-white/40 md:left-10">
+          Maharashtra • India
         </div>
-
-        {/* LOCATION */}
-
-        <div className="absolute bottom-8 right-6 z-20 hidden items-center gap-4 md:right-10 md:flex">
-
-          <div className="text-right">
-
-            <p className="text-[9px] uppercase tracking-[0.3em] text-white/30">
-              Based In
-            </p>
-
-            <p className="mt-1 text-[10px] uppercase tracking-[0.25em] text-white/60">
-              Maharashtra • India
-            </p>
-
-          </div>
-
-          <div className="h-px w-12 bg-white/30" />
-
-        </div>
-
       </section>
 
-      {/* =========================
-          INTRO
-      ========================= */}
-
-      <section className="relative overflow-hidden">
-
-        <div className="mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-44">
-
-          <div className="grid gap-16 md:grid-cols-[0.45fr_1.55fr]">
+      {/* INTRO */}
+      <section className="section-padding">
+        <div className="site-container">
+          <div className="grid gap-12 md:grid-cols-[0.5fr_1.5fr]">
+            <p className="section-label">Who We Are</p>
 
             <div>
-
-              <p className="text-xs uppercase tracking-[0.35em] text-white/35">
-                01 — Who We Are
-              </p>
-
-            </div>
-
-            <div>
-
-              <h2 className="max-w-6xl text-4xl font-medium leading-[1.05] tracking-[-0.03em] md:text-6xl lg:text-7xl">
+              <h2 className="text-4xl leading-tight tracking-[-0.04em] md:text-6xl">
                 We build the infrastructure that moves people, connects
                 places and creates lasting value.
               </h2>
 
-              <div className="mt-12 grid gap-10 md:grid-cols-2">
-
-                <p className="text-base leading-8 text-white/50">
-                  Dason Buildcom is a construction and infrastructure
-                  company focused on dependable execution, engineering
-                  quality and practical project delivery.
+              <div className="mt-10 grid gap-8 md:grid-cols-2">
+                <p className="text-white/50">
+                  Dason Buildcom is a construction and infrastructure company
+                  focused on dependable execution, engineering quality and
+                  practical project delivery.
                 </p>
 
-                <p className="text-base leading-8 text-white/50">
-                  From roads and civil structures to earthwork and
-                  development works, our approach is built around
-                  capability, discipline and long-term performance.
+                <p className="text-white/50">
+                  From roads and civil structures to earthwork and development
+                  works, our approach is built around capability and discipline.
                 </p>
-
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </section>
 
-      {/* =========================
-          EXPERTISE
-      ========================= */}
-
+      {/* EXPERTISE */}
       <section id="expertise" className="border-y border-white/10">
-
-        <div className="mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-40">
-
-          <div className="grid gap-16 md:grid-cols-[0.75fr_1.25fr]">
-
+        <div className="site-container section-padding">
+          <div className="grid gap-14 md:grid-cols-[0.7fr_1.3fr]">
             <div>
-
-              <p className="text-xs uppercase tracking-[0.35em] text-white/35">
-                02 — What We Do
-              </p>
-
-              <h2 className="mt-7 text-5xl font-medium leading-[0.95] tracking-[-0.04em] md:text-7xl">
+              <p className="section-label">What We Do</p>
+              <h2 className="mt-7 text-5xl leading-none md:text-7xl">
                 Our
                 <br />
                 Expertise
               </h2>
-
-              <p className="mt-10 max-w-md text-base leading-8 text-white/45">
-                Complete construction capabilities backed by experienced
-                site execution, machinery and a practical understanding
-                of infrastructure projects.
-              </p>
-
             </div>
 
             <div className="border-t border-white/10">
-
-              {[
-                [
-                  "01",
-                  "Roads & Infrastructure",
-                  "Road development, pavement works, earthwork and supporting infrastructure execution.",
-                ],
-                [
-                  "02",
-                  "Civil Structures",
-                  "RCC, foundations, structures, drainage and civil construction works.",
-                ],
-                [
-                  "03",
-                  "Earthwork",
-                  "Excavation, filling, grading, site development and large-scale earthwork operations.",
-                ],
-                [
-                  "04",
-                  "Government Works",
-                  "Infrastructure and civil works executed with documentation, quality and contractual discipline.",
-                ],
-              ].map(([number, title, description]) => (
-
+              {expertise.map((item) => (
                 <div
-                  key={number}
-                  className="group flex items-center justify-between border-b border-white/10 py-8 transition duration-500 hover:px-3"
+                  key={item.number}
+                  className="border-b border-white/10 py-8 transition hover:border-[#c9a96e]"
                 >
-
-                  <div>
-
-                    <span className="text-xs text-white/30">
-                      {number}
-                    </span>
-
-                    <h3 className="mt-3 text-2xl font-medium md:text-4xl">
-                      {title}
-                    </h3>
-
-                    <p className="mt-3 max-w-lg text-sm leading-7 text-white/40">
-                      {description}
-                    </p>
-
-                  </div>
-
-                  <span className="ml-6 text-2xl text-white/40 transition group-hover:translate-x-2">
-                    ↗
+                  <span className="text-xs text-[#c9a96e]">
+                    {item.number}
                   </span>
-
+                  <h3 className="mt-3 text-2xl md:text-4xl">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 max-w-lg text-sm leading-7 text-white/45">
+                    {item.description}
+                  </p>
                 </div>
-
               ))}
-
             </div>
-
           </div>
-
         </div>
-
       </section>
 
-      {/* =========================
-          PROJECTS
-      ========================= */}
-
-      <section id="projects" className="bg-neutral-950">
-
-        <div className="mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-40">
-
+      {/* PROJECTS */}
+      <section id="projects" className="bg-[#0d0d0d]">
+        <div className="site-container section-padding">
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-
             <div>
-
-              <p className="text-xs uppercase tracking-[0.35em] text-white/35">
-                03 — Selected Work
-              </p>
-
-              <h2 className="mt-6 text-5xl font-medium tracking-[-0.04em] md:text-7xl">
-                Projects
-              </h2>
-
+              <p className="section-label">Selected Work</p>
+              <h2 className="mt-6 text-5xl md:text-7xl">Projects</h2>
             </div>
 
-            <p className="max-w-xl text-base leading-8 text-white/40">
-              A selection of completed building and infrastructure works
-              delivered through disciplined planning, site execution and
-              quality control.
+            <p className="max-w-xl text-white/45">
+              A selection of building and infrastructure works delivered
+              through planning, site execution and quality control.
             </p>
-
           </div>
 
-          {/* ACTUAL PROJECT PHOTOS */}
-
-          <div className="mt-20 grid gap-8 md:grid-cols-2">
-
-            {[
-              {
-                image: "/projects/mgm-hospital.jpg",
-                number: "01",
-                title: "MGM Hospital",
-                category: "Healthcare Building",
-              },
-              {
-                image: "/projects/mgm-polytechnic.jpg",
-                number: "02",
-                title: "MGM Polytechnic Building",
-                category: "Educational Building",
-              },
-              {
-                image: "/projects/mgm-university.jpeg",
-                number: "03",
-                title: "MGM University",
-                category: "Institutional Building",
-              },
-              {
-                image: "/projects/sant-tukaram-natyagruha.webp",
-                number: "04",
-                title: "Sant Tukaram Natyagruha",
-                category: "Cultural Building",
-              },
-              {
-                image: "/projects/santukaram-hall.jpg",
-                number: "05",
-                title: "Santukaram Hall",
-                category: "Building Construction",
-              },
-              {
-                image: "/projects/shreyash-college-hostel.jpg",
-                number: "06",
-                title: "Shreyash College Hostel Building",
-                category: "Hostel Building",
-              },
-            ].map((project) => (
-
-              <div
-                key={project.number}
-                className="group relative overflow-hidden"
-              >
-
+          <div className="mt-16 grid gap-7 md:grid-cols-2">
+            {projects.map((project, index) => (
+              <div key={project.title} className="project-card group">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="h-[55vh] w-full object-cover transition duration-1000 group-hover:scale-[1.05] md:h-[65vh]"
+                  className="project-image h-[420px] md:h-[540px]"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+                <div className="project-overlay" />
 
                 <div className="absolute bottom-0 left-0 p-6 md:p-8">
-
-                  <p className="text-xs uppercase tracking-[0.3em] text-white/50">
-                    {project.number} / Completed Project
+                  <p className="text-[10px] uppercase tracking-[0.25em] text-[#e6c991]">
+                    {String(index + 1).padStart(2, "0")} / Project
                   </p>
-
-                  <h3 className="mt-3 text-2xl font-medium md:text-3xl">
+                  <h3 className="mt-3 text-2xl md:text-3xl">
                     {project.title}
                   </h3>
-
-                  <p className="mt-3 text-sm text-white/50">
+                  <p className="mt-2 text-sm text-white/50">
                     {project.category}
                   </p>
-
                 </div>
-
               </div>
-
             ))}
-
           </div>
-
         </div>
-
       </section>
 
-      {/* =========================
-          STATS
-      ========================= */}
-
+      {/* STATS */}
       <section className="border-y border-white/10">
-
-        <div className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-32">
-
-          <div className="grid grid-cols-2 gap-y-16 md:grid-cols-4 md:gap-8">
-
-            <div>
-              <div className="text-5xl font-medium tracking-[-0.05em] md:text-7xl">
-                15+
+        <div className="site-container section-padding">
+          <div className="grid grid-cols-2 gap-12 md:grid-cols-4">
+            {[
+              ["15+", "Years Experience"],
+              ["50+", "Projects & Works"],
+              ["10+", "Equipment & Machinery"],
+              ["100%", "Execution Focus"],
+            ].map(([number, label]) => (
+              <div key={label}>
+                <div className="stat-number">{number}</div>
+                <p className="stat-label">{label}</p>
               </div>
-
-              <p className="mt-4 text-xs uppercase tracking-[0.25em] text-white/35">
-                Years of Experience
-              </p>
-            </div>
-
-            <div>
-              <div className="text-5xl font-medium tracking-[-0.05em] md:text-7xl">
-                50+
-              </div>
-
-              <p className="mt-4 text-xs uppercase tracking-[0.25em] text-white/35">
-                Projects & Works
-              </p>
-            </div>
-
-            <div>
-              <div className="text-5xl font-medium tracking-[-0.05em] md:text-7xl">
-                10+
-              </div>
-
-              <p className="mt-4 text-xs uppercase tracking-[0.25em] text-white/35">
-                Equipment & Machinery
-              </p>
-            </div>
-
-            <div>
-              <div className="text-5xl font-medium tracking-[-0.05em] md:text-7xl">
-                100%
-              </div>
-
-              <p className="mt-4 text-xs uppercase tracking-[0.25em] text-white/35">
-                Execution Focus
-              </p>
-            </div>
-
+            ))}
           </div>
-
         </div>
-
       </section>
 
-      {/* =========================
-          ABOUT
-      ========================= */}
-
-      <section id="about" className="bg-neutral-950">
-
-        <div className="mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-40">
-
-          <div className="grid gap-16 md:grid-cols-2">
-
+      {/* ABOUT */}
+      <section id="about" className="bg-[#0d0d0d]">
+        <div className="site-container section-padding">
+          <div className="grid gap-14 md:grid-cols-2">
             <div>
-
-              <p className="text-xs uppercase tracking-[0.35em] text-white/35">
-                04 — About Dason
-              </p>
-
-              <h2 className="mt-7 max-w-xl text-5xl font-medium leading-[0.95] tracking-[-0.04em] md:text-7xl">
+              <p className="section-label">About Dason</p>
+              <h2 className="mt-7 text-5xl leading-none md:text-7xl">
                 Built on
                 <br />
                 Experience.
               </h2>
-
             </div>
 
-            <div className="space-y-8">
-
-              <p className="text-xl leading-9 text-white/75 md:text-2xl">
-                Dason Buildcom is built around one simple principle:
-                good construction begins with responsible execution.
+            <div className="space-y-7 text-white/50">
+              <p className="text-xl leading-9 text-white/80">
+                Dason Buildcom is built around one simple principle: good
+                construction begins with responsible execution.
               </p>
 
-              <p className="leading-8 text-white/45">
-                Our work combines planning, engineering understanding,
-                site management and equipment capability to deliver
-                projects efficiently and responsibly.
+              <p>
+                Our work combines planning, engineering understanding, site
+                management and equipment capability to deliver projects
+                efficiently and responsibly.
               </p>
 
-              <p className="leading-8 text-white/45">
+              <p>
                 We believe long-term relationships are created through
-                consistent quality, transparent communication and
-                dependable project delivery.
+                consistent quality, transparent communication and dependable
+                project delivery.
               </p>
 
-              <p className="leading-8 text-white/45">
-                As our capabilities continue to grow, our focus remains
-                the same — build strong, execute carefully and deliver
-                work that stands the test of time.
+              <p>
+                Our focus remains the same — build strong, execute carefully
+                and deliver work that stands the test of time.
               </p>
-
             </div>
-
           </div>
-
         </div>
-
       </section>
 
-      {/* =========================
-          MACHINERY
-      ========================= */}
-
+      {/* MACHINERY */}
       <section className="border-y border-white/10">
+        <div className="site-container section-padding">
+          <p className="section-label">Our Resources</p>
 
-        <div className="mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-40">
+          <h2 className="mt-6 text-5xl md:text-7xl">
+            Machinery
+            <br />
+            & Equipment
+          </h2>
 
-          <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
-
-            <div>
-
-              <p className="text-xs uppercase tracking-[0.35em] text-white/35">
-                05 — Our Resources
-              </p>
-
-              <h2 className="mt-6 text-5xl font-medium tracking-[-0.04em] md:text-7xl">
-                Machinery
-                <br />
-                & Equipment
-              </h2>
-
-            </div>
-
-            <p className="max-w-md leading-8 text-white/40">
-              In-house and project-ready equipment supporting
-              earthwork, infrastructure and civil construction
-              operations.
-            </p>
-
-          </div>
-
-          <div className="mt-20 grid gap-px border border-white/10 bg-white/10 md:grid-cols-4">
-
-            {[
-              ["01", "JCB", "Excavation & site work"],
-              ["02", "Poclain", "Heavy excavation"],
-              ["03", "Grader", "Road grading"],
-              ["04", "Roller", "Compaction"],
-              ["05", "Ajax", "Concrete operations"],
-              ["06", "Tractor", "Material movement"],
-              ["07", "Site Vehicles", "Project support"],
-              ["08", "More Equipment", "Project specific needs"],
-            ].map(([number, title, description]) => (
-
+          <div className="mt-14 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 md:grid-cols-4">
+            {machinery.map((item, index) => (
               <div
-                key={number}
-                className="bg-black p-7 transition duration-500 hover:bg-neutral-900"
+                key={item}
+                className="bg-[#080808] p-7 transition hover:bg-[#18150f]"
               >
-
-                <span className="text-[10px] tracking-[0.25em] text-white/30">
-                  {number}
+                <span className="text-xs text-[#c9a96e]">
+                  {String(index + 1).padStart(2, "0")}
                 </span>
-
-                <h3 className="mt-12 text-2xl font-medium">
-                  {title}
-                </h3>
-
-                <p className="mt-3 text-sm leading-6 text-white/40">
-                  {description}
+                <h3 className="mt-10 text-xl">{item}</h3>
+                <p className="mt-3 text-sm text-white/40">
+                  Project support and operations
                 </p>
-
               </div>
-
             ))}
-
           </div>
-
         </div>
-
       </section>
 
-      {/* =========================
-          WHY DASON
-      ========================= */}
-
-      <section className="bg-neutral-950">
-
-        <div className="mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-40">
-
-          <div className="grid gap-16 md:grid-cols-[0.7fr_1.3fr]">
-
+      {/* WHY DASON */}
+      <section className="bg-[#0d0d0d]">
+        <div className="site-container section-padding">
+          <div className="grid gap-14 md:grid-cols-[0.7fr_1.3fr]">
             <div>
-
-              <p className="text-xs uppercase tracking-[0.35em] text-white/35">
-                06 — Why Dason
-              </p>
-
-              <h2 className="mt-6 text-5xl font-medium leading-[0.95] tracking-[-0.04em] md:text-7xl">
+              <p className="section-label">Why Dason</p>
+              <h2 className="mt-6 text-5xl leading-none md:text-7xl">
                 Built to
                 <br />
                 Deliver.
               </h2>
-
             </div>
 
-            <div className="grid gap-5 md:grid-cols-2">
-
+            <div className="grid gap-5 sm:grid-cols-2">
               {[
-                [
-                  "01",
-                  "Engineering Focus",
-                  "Practical engineering thinking from planning through execution and completion.",
-                ],
-                [
-                  "02",
-                  "Site Capability",
-                  "Experienced site coordination supported by machinery and operational resources.",
-                ],
-                [
-                  "03",
-                  "Quality",
-                  "Focus on workmanship, materials, specifications and consistent quality control.",
-                ],
-                [
-                  "04",
-                  "Reliable Execution",
-                  "Clear coordination, disciplined execution and focus on delivering the committed scope.",
-                ],
-              ].map(([number, title, description]) => (
-
+                ["01", "Engineering Focus"],
+                ["02", "Site Capability"],
+                ["03", "Quality"],
+                ["04", "Reliable Execution"],
+              ].map(([number, title]) => (
                 <div
                   key={number}
-                  className="border border-white/10 p-8 transition duration-500 hover:bg-white/[0.03]"
+                  className="premium-card p-7 md:p-8"
                 >
-
-                  <span className="text-xs text-white/30">
-                    {number}
-                  </span>
-
-                  <h3 className="mt-12 text-2xl font-medium">
-                    {title}
-                  </h3>
-
-                  <p className="mt-5 leading-7 text-white/40">
-                    {description}
+                  <span className="text-xs text-[#c9a96e]">{number}</span>
+                  <h3 className="mt-12 text-xl md:text-2xl">{title}</h3>
+                  <p className="mt-4 text-sm leading-7 text-white/40">
+                    Practical planning, disciplined execution and focus on
+                    dependable project delivery.
                   </p>
-
                 </div>
-
               ))}
-
             </div>
-
           </div>
-
         </div>
-
       </section>
 
-      {/* =========================
-          CAPABILITY
-      ========================= */}
+      {/* CTA */}
+      <section className="border-y border-white/10">
+        <div className="site-container section-padding">
+          <p className="section-label">Our Capability</p>
 
-      <section className="border-y border-white/10 bg-black">
-
-        <div className="mx-auto max-w-7xl px-6 py-32 md:px-10 md:py-48">
-
-          <p className="text-xs uppercase tracking-[0.35em] text-white/35">
-            07 — Our Capability
-          </p>
-
-          <h2 className="mt-8 max-w-6xl text-5xl font-medium leading-[0.95] tracking-[-0.05em] md:text-7xl lg:text-8xl">
+          <h2 className="mt-8 text-5xl leading-none md:text-8xl">
             Engineering.
             <br />
             Execution.
@@ -806,222 +441,129 @@ export default function Home() {
             Reliability.
           </h2>
 
-          <div className="mt-16 flex flex-col justify-between gap-10 border-t border-white/10 pt-10 md:flex-row">
-
-            <p className="max-w-xl text-lg leading-8 text-white/45">
-              Our capabilities are built to support projects from
-              initial site preparation through execution, completion
-              and handover.
+          <div className="mt-12 flex flex-col justify-between gap-8 border-t border-white/10 pt-8 md:flex-row md:items-center">
+            <p className="max-w-xl text-white/45">
+              Our capabilities support projects from initial site preparation
+              through execution, completion and handover.
             </p>
 
-            <a
-              href="#contact"
-              className="inline-flex h-fit w-fit border border-white/30 px-7 py-4 text-xs uppercase tracking-[0.25em] transition duration-500 hover:bg-white hover:text-black"
-            >
+            <a href="#contact" className="btn-outline w-fit">
               Discuss a Project
             </a>
-
           </div>
-
         </div>
-
       </section>
 
-      {/* =========================
-          CONTACT
-      ========================= */}
-
-      <section id="contact" className="bg-white text-black">
-
-        <div className="mx-auto max-w-7xl px-6 py-28 md:px-10 md:py-40">
-
-          <div className="grid gap-16 md:grid-cols-[1.1fr_0.9fr]">
-
+      {/* CONTACT */}
+      <section id="contact" className="bg-[#f5f3ed] text-black">
+        <div className="site-container section-padding">
+          <div className="grid gap-14 md:grid-cols-2">
             <div>
-
-              <p className="text-xs uppercase tracking-[0.35em] text-black/40">
-                08 — Contact
+              <p className="text-xs uppercase tracking-[0.3em] text-black/40">
+                Contact
               </p>
 
-              <h2 className="mt-7 max-w-3xl text-5xl font-medium leading-[0.95] tracking-[-0.05em] md:text-8xl">
+              <h2 className="mt-7 text-5xl leading-none tracking-[-0.05em] md:text-8xl">
                 Let's Build
                 <br />
                 Together.
               </h2>
 
-              <p className="mt-10 max-w-xl text-lg leading-8 text-black/50">
-                Have a construction, infrastructure or civil project
-                in mind? Get in touch with our team.
+              <p className="mt-10 max-w-lg text-lg leading-8 text-black/50">
+                Have a construction, infrastructure or civil project in mind?
+                Get in touch with our team.
               </p>
-
             </div>
 
             <div className="flex flex-col justify-end">
+              <a
+                href="mailto:dasonbuildcom01@gmail.com"
+                className="flex justify-between border-t border-black/20 py-6 text-sm"
+              >
+                <span>dasonbuildcom01@gmail.com</span>
+                <span>↗</span>
+              </a>
 
-              <div className="border-t border-black/15">
+              <a
+                href="tel:+919271333313"
+                className="flex justify-between border-y border-black/20 py-6 text-sm"
+              >
+                <span>+91 92713 33313</span>
+                <span>↗</span>
+              </a>
 
-                <a
-                  href="mailto:dasonbuildcom01@gmail.com"
-                  className="flex items-center justify-between border-b border-black/15 py-6 transition hover:px-2"
-                >
-
-                  <span className="text-sm">
-                    dasonbuildcom01@gmail.com
-                  </span>
-
-                  <span>
-                    ↗
-                  </span>
-
-                </a>
-
-                <a
-                  href="tel:+919271333313"
-                  className="flex items-center justify-between border-b border-black/15 py-6 transition hover:px-2"
-                >
-
-                  <span className="text-sm">
-                    +91 92713 33313
-                  </span>
-
-                  <span>
-                    ↗
-                  </span>
-
-                </a>
-
-                <a
-                  href="mailto:dasonbuildcom01@gmail.com"
-                  className="mt-8 inline-flex w-full items-center justify-center bg-black px-8 py-5 text-xs uppercase tracking-[0.25em] text-white transition hover:bg-neutral-800"
-                >
-                  Send Enquiry
-                </a>
-
-              </div>
-
+              <a
+                href="mailto:dasonbuildcom01@gmail.com"
+                className="mt-8 flex justify-center bg-black px-8 py-5 text-xs uppercase tracking-[0.25em] text-white transition hover:bg-neutral-800"
+              >
+                Send Enquiry
+              </a>
             </div>
-
           </div>
-
         </div>
-
       </section>
 
-      {/* =========================
-          FINAL CTA
-      ========================= */}
-
-      <section className="relative overflow-hidden">
-
-        <div className="mx-auto max-w-7xl px-6 py-32 md:px-10 md:py-48">
-
-          <p className="text-xs uppercase tracking-[0.35em] text-white/35">
-            Dason Buildcom
-          </p>
-
-          <h2 className="mt-8 max-w-6xl text-5xl font-medium leading-[0.9] tracking-[-0.055em] md:text-8xl lg:text-[9rem]">
-            Let's Build
-            <br />
-            Something
-            <br />
-            That Lasts.
-          </h2>
-
-          <a
-            href="#contact"
-            className="mt-14 inline-flex border border-white/30 px-8 py-5 text-xs uppercase tracking-[0.25em] transition duration-500 hover:bg-white hover:text-black"
-          >
-            Contact Us
-          </a>
-
-        </div>
-
-      </section>
-
-      {/* =========================
-          FOOTER
-      ========================= */}
-
+      {/* FOOTER */}
       <footer className="border-t border-white/10">
-
-        <div className="mx-auto max-w-7xl px-6 py-12 md:px-10">
-
-          <div className="flex flex-col justify-between gap-10 md:flex-row md:items-end">
-
+        <div className="site-container py-12">
+          <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div>
+              <img
+                src="/images/dason-logo.jpg"
+                alt="Dason Buildcom Logo"
+                className="h-16 w-auto max-w-[200px] object-contain"
+              />
 
-              <div className="text-2xl font-semibold tracking-[0.25em]">
-                DASON
-              </div>
-
-              <div className="mt-2 text-[9px] uppercase tracking-[0.35em] text-white/35">
-                Buildcom
-              </div>
-
-              <p className="mt-5 max-w-xs text-sm leading-6 text-white/35">
+              <p className="mt-5 text-sm text-white/40">
                 Construction & Infrastructure
               </p>
-
             </div>
 
-            <div className="flex flex-wrap gap-8 text-[10px] uppercase tracking-[0.2em] text-white/40">
-
-              <a href="#expertise" className="hover:text-white">
+            <div className="flex flex-wrap gap-6 text-[10px] uppercase tracking-[0.2em] text-white/40">
+              <a href="#expertise" className="hover:text-[#c9a96e]">
                 Expertise
               </a>
-
-              <a href="#projects" className="hover:text-white">
+              <a href="#projects" className="hover:text-[#c9a96e]">
                 Projects
               </a>
-
-              <a href="#about" className="hover:text-white">
+              <a href="#about" className="hover:text-[#c9a96e]">
                 About
               </a>
-
-              <a href="#contact" className="hover:text-white">
+              <a href="#contact" className="hover:text-[#c9a96e]">
                 Contact
               </a>
-
             </div>
-
           </div>
 
-          <div className="mt-16 flex flex-col justify-between gap-4 border-t border-white/10 pt-6 text-[10px] uppercase tracking-[0.15em] text-white/25 md:flex-row">
-
-            <span>
-              © 2026 Dason Buildcom. All Rights Reserved.
-            </span>
-
-            <span>
-              Maharashtra • India
-            </span>
-
+          <div className="mt-12 border-t border-white/10 pt-6 text-[10px] uppercase tracking-[0.15em] text-white/25">
+            © 2026 Dason Buildcom. All Rights Reserved.
           </div>
-
         </div>
-
       </footer>
 
-      {/* =========================
-          WHATSAPP
-      ========================= */}
-
+      {/* WHATSAPP BUTTON */}
       <a
         href="https://wa.me/919271333313"
         target="_blank"
-        rel="noreferrer"
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-white text-sm font-semibold text-black shadow-2xl transition duration-300 hover:scale-110"
-        aria-label="WhatsApp"
+        rel="noopener noreferrer"
+        aria-label="Contact Dason Buildcom on WhatsApp"
+        className="whatsapp-float"
       >
-        W
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="25"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M21 11.5a8.38 8.38 0 0 1-9 8.5 8.5 8.5 0 0 1-4-.9L3 21l1.9-4.8A8.5 8.5 0 1 1 21 11.5Z" />
+          <path d="M8 9.5c.3 2 2.5 4.2 4.5 4.5" />
+        </svg>
       </a>
-
-      {/* =========================
-          GSAP ANIMATIONS
-      ========================= */}
-
-      <Animations />
-
     </main>
   );
 }
