@@ -22,6 +22,12 @@ const expertise = [
 
 const machinery = ["JCB", "Poclain", "Grader", "Roller", "Ajax", "Tractor", "Site Vehicles", "Project Equipment"];
 
+const leadership = [
+  { image: "/images/grandfather.jpg", name: "Grandfather", role: "Founding Inspiration & Family Legacy" },
+  { image: "/images/father.jpg", name: "Father", role: "Senior Advisor & Construction Mentor" },
+  { image: "/images/amaan.jpg", name: "Amaan Habib Shaikh", role: "Proprietor & Business Lead" },
+];
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const closeMenu = () => setMenuOpen(false);
@@ -66,6 +72,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/65" />
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
+        <div className="hero-vignette absolute inset-0" />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-40 md:px-10">
           <p className="mb-8 text-xs uppercase tracking-[0.3em] text-[#c9a96e] md:text-sm">Construction • Infrastructure • Industrial • Turnkey Projects</p>
@@ -100,6 +107,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <div className="gold-divider" />
 
       {/* EXPERTISE */}
       <section id="expertise" className="border-y border-white/10">
@@ -136,7 +145,7 @@ export default function Home() {
           <div className="mt-16 grid gap-7 md:grid-cols-2">
             {projects.map((project, index) => (
               <div key={project.title} className="project-card group">
-                <img src={project.image} alt={project.title} className="project-image h-[420px] md:h-[540px]" />
+                <img src={project.image} alt={project.title} className="project-image premium-photo h-[420px] md:h-[540px]" />
                 <div className="project-overlay" />
                 <div className="absolute bottom-0 left-0 p-6 md:p-8">
                   <p className="text-[10px] uppercase tracking-[0.25em] text-[#e6c991]">{String(index + 1).padStart(2, "0")} / Project</p>
@@ -156,7 +165,7 @@ export default function Home() {
             {[["5+", "Years Experience"], ["6+", "Projects & Works"], ["8+", "Equipment & Machinery"], ["100%", "Execution Focus"]].map(([number, label]) => (
               <div key={label}>
                 <div className="stat-number">{number}</div>
-                <p className="stat-label">{label}</p>
+                <p className="stat-label mt-4">{label}</p>
               </div>
             ))}
           </div>
@@ -177,6 +186,32 @@ export default function Home() {
               <p>Our mission is to deliver every project with superior quality, professional engineering, safe construction practices, timely execution, cost efficiency and customer-focused service.</p>
               <p>We continuously strive to improve our processes, technology and capabilities to create greater value for our clients.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="gold-divider" />
+
+      {/* LEADERSHIP */}
+      <section className="border-y border-white/10">
+        <div className="site-container section-padding">
+          <p className="section-label">Our Legacy</p>
+          <h2 className="mt-6 text-5xl leading-none md:text-7xl">Leadership &<br />Family Legacy</h2>
+
+          <p className="mt-10 max-w-2xl text-white/45">
+            Dason Buildcom is supported by a family-rooted construction background. The family&apos;s construction journey began with our grandfather, whose contribution represents the foundation of construction knowledge, values and practical experience carried forward by the next generation.
+          </p>
+
+          <div className="mt-14 grid gap-7 sm:grid-cols-2 md:grid-cols-3">
+            {leadership.map((person) => (
+              <div key={person.name} className="premium-card overflow-hidden">
+                <img src={person.image} alt={person.name} className="premium-photo h-[320px] w-full object-cover object-top" />
+                <div className="p-7">
+                  <h3 className="text-xl md:text-2xl">{person.name}</h3>
+                  <p className="mt-2 text-sm text-[#c9a96e]">{person.role}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
